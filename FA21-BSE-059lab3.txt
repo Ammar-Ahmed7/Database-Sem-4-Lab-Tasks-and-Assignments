@@ -1,0 +1,121 @@
+--LAB TASK 3
+
+ --1
+    select * from branch where branchNo='B005';
+
+ --2
+   select * from branch where city='London';
+
+ --3
+   select city from branch where branchNo is NOT NULL;
+
+ --4
+   select * from branch where branchNo='B005' OR branchNo='B003';
+
+ --5
+   select * from staff where salary > 18000; 
+
+ --6
+   select * from staff where sex='M';
+
+ --7
+  select fname+' '+lName as Managers,branchNo  from staff where position='Manager' ;
+
+ --8
+   select * from privateOwner;
+
+ --8
+   select * from propertyForRent;
+
+ --9
+   select fname+' '+lName as Ascended_Members from staff order by fname asc; 
+
+
+
+--Lab Task 3.1
+
+ --1
+   select * from propertyForRent where ownerNo='CO87';
+
+ --2
+   select propertyNo,street,city,postcode,staffNo from propertyForRent where staffNo='SG37';
+
+ --3
+   select rooms,type from propertyForRent where type='Flat';
+
+ --4
+   select * from propertyForRent where rent<500;
+
+ --5
+   select fname+' '+lName as Flat_Owners,telNo,eMail from client where prefType='Flat';
+
+ --6
+   select * from privateOwner order by fname asc;
+
+ --7
+   select COUNT(viewDate) as Total_Properties from viewing where viewDate is not null;
+   
+ --8
+   select * from registration;
+
+ --9
+   Select Count(staffNo) as Total_Staff_Members from staff;
+
+ --10
+   select * from staff where DOB>'10-Nov-60';
+
+ --11
+   UPDATE branch SET city='Bristol' WHERE branchNo='B005';
+   select * from branch where branchNo='B005';
+
+ --12
+   UPDATE branch SET city='London' WHERE branchNo='B005';
+   select * from branch where branchNo='B005';
+   
+ --13
+   select * from propertyForRent where staffNo is Null;
+
+ --14
+   SELECT fName, lName FROM privateOwner WHERE fName LIKE 'J%';
+
+ --15
+   select * from viewing where comment is NULL;
+
+ --16
+   select branchNo,COUNT(*) as employees from staff group by branchNo having COUNT(*)>=0;
+
+
+
+--LAB TASK 3.2
+
+ --1
+   SELECT AVG(salary) AS average_salary FROM staff;
+
+ --2
+   SELECT AVG(salary) AS average_salary FROM staff where branchNo='B003';
+
+ --3
+   SELECT AVG(salary) AS average_salary FROM staff where position='Manager';
+
+ --4
+   SELECT fname+' '+lname as Highest_Salaried,position FROM staff WHERE salary = (SELECT MAX(salary) FROM staff);
+
+ --5
+   select fname from staff where salary= (select max(salary) from staff where position='Supervisor')
+
+ --6
+   select fname,position from staff where salary= (select min(salary) from staff)
+
+ --7
+   select fname,position,branchNo from staff where salary= (select min(salary) from staff where position='Manager')
+ 
+ --8
+   Select COUNT (position) from staff where position='Supervisor'
+
+ --9
+   select COUNT (position) as 'Number of total supervisors' from staff where position='Supervisor' and (branchNo='B003'or branchNo='B005')
+ 
+ --10
+   select sum(salary) as 'Total Sum' from staff
+
+
